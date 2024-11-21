@@ -1,5 +1,4 @@
 import controller.ControladorJogo;
-
 import java.util.Scanner;
 
 public class Main {
@@ -21,6 +20,10 @@ public class Main {
 
             boolean rodadaEmAndamento = true;
 
+            // Exibir estados iniciais
+            controlador.exibirEstadoJogador();
+            controlador.exibirEstadoDealer();
+
             // Ciclo da rodada
             while (rodadaEmAndamento) {
                 System.out.println("\nEscolha sua ação:");
@@ -32,7 +35,12 @@ public class Main {
                 int escolha = scanner.nextInt();
 
                 switch (escolha) {
-                    case 1 -> controlador.jogadorPedirCarta();
+                    case 1 -> {
+                        controlador.jogadorPedirCarta();
+                        if (!controlador.isRodadaAtiva()) {
+                            rodadaEmAndamento = false; // Encerra o loop
+                        }
+                    }
                     case 2 -> {
                         controlador.jogadorManter();
                         rodadaEmAndamento = false;

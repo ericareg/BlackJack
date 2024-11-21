@@ -1,8 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Jogo {
     private static Jogo instancia;
     private final Baralho baralho;
@@ -10,8 +7,8 @@ public class Jogo {
     private final Dealer dealer;
     private int aposta;
     private boolean rodadaAtiva;
+    private String ultimoResultado;
 
-    // Singleton: apenas uma instância de Jogo
     private Jogo() {
         baralho = new Baralho();
         jogador = new Jogador();
@@ -95,7 +92,15 @@ public class Jogo {
 
     private void finalizarRodada(String resultado) {
         rodadaAtiva = false;
-        System.out.println(resultado);
+        ultimoResultado = resultado;
+    }
+
+    public boolean isRodadaAtiva() {
+        return rodadaAtiva;
+    }
+
+    public String getUltimoResultado() {
+        return ultimoResultado;
     }
 
     public int getValorMaoJogador() {
