@@ -15,6 +15,8 @@ public class Main {
         while (jogarNovamente) {
             // Solicitar aposta inicial
             System.out.print("Digite o valor da sua aposta: ");
+            System.out.print("\n");
+
             int aposta = scanner.nextInt();
             controlador.iniciarNovaRodada(aposta);
 
